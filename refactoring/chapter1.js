@@ -57,8 +57,6 @@ export function statement(invoice, plays) {
         return totalAmount;
     }
 
-    let totalAmount = hoge();
-
     function totalVolumeCredits() {
         let volumeCredits = 0;
         for (let perf of invoice.performances) {
@@ -67,7 +65,7 @@ export function statement(invoice, plays) {
         return volumeCredits;
     }
 
-    result += `Amount owed is ${usd(totalAmount)}\n`;
+    result += `Amount owed is ${usd(hoge())}\n`;
     result += `You earned ${totalVolumeCredits()} credits\n`;
     return result;
 }
