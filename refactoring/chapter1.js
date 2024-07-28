@@ -9,7 +9,7 @@ export function statement(invoice, plays) {
         minimumFractionDigits: 2
     }).format;
 
-    function amountFor(aPerformance, play) {
+    function amountFor(aPerformance) {
         let result = 0;
         switch (playFor(aPerformance).type) {
             case "tragedy":
