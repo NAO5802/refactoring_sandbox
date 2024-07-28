@@ -8,8 +8,8 @@ export function statement(invoice, plays) {
         currency: "USD",
         minimumFractionDigits: 2
     }).format;
-    for (let perf of invoice.performances) {
-        const play = plays[perf.playID];
+
+    function amountFor(play, perf) {
         let thisAmount = 0;
         switch (play.type) {
             case "tragedy":
@@ -28,6 +28,12 @@ export function statement(invoice, plays) {
             default:
                 throw new Error(`unknown type: ${play.type}`);
         }
+        return thisAmount;
+    }
+
+    for (let perf of invoice.performances) {
+        const play = plays[perf.playID];
+        const thisAmount = amountFor(play, perf);
         // ボリューム特典のポイントを加算
         volumeCredits += Math.max(perf.audience - 30, 0);
         // 喜劇のときは 10人につき、 さらにポイントを加算
