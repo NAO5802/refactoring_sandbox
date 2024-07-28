@@ -38,9 +38,7 @@ export function statement(invoice, plays) {
     function volumeCreditsFor(aPerformance) {
         let result = 0;
 
-        // ボリューム特典のポイントを加算
         result += Math.max(aPerformance.audience - 30, 0);
-        // 喜劇のときは 10人につき、 さらにポイントを加算
         if ("comedy" === playFor(aPerformance).type) result += Math.floor(aPerformance.audience / 5);
 
         return result;
