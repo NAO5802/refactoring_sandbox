@@ -58,11 +58,11 @@ export function statement(invoice, plays) {
     }
 
     function totalVolumeCredits() {
-        let volumeCredits = 0;
-        for (let perf of invoice.performances) {
-            volumeCredits += volumeCreditsFor(perf);
+        let result = 0;
+        for (let aPerformance of invoice.performances) {
+            result += volumeCreditsFor(aPerformance);
         }
-        return volumeCredits;
+        return result;
     }
 
     result += `Amount owed is ${usd(totalAmount())}\n`;
