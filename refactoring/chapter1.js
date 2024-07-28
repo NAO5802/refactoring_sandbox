@@ -1,5 +1,13 @@
 export function statement(invoice, plays) {
     let result = `Statement for ${invoice.customer}\n`;
+    for (let perf of invoice.performances) {
+        // 注文の内訳を出力
+        result += ` ${playFor(perf).name}: ${usd(amountFor(perf))} (${perf.audience} seats)\n`;
+    }
+
+    result += `Amount owed is ${usd(totalAmount())}\n`;
+    result += `You earned ${totalVolumeCredits()} credits\n`;
+    return result;
 
     function usd(aNumber) {
         return new Intl.NumberFormat("en-US", {
@@ -44,11 +52,6 @@ export function statement(invoice, plays) {
         return result;
     }
 
-    for (let perf of invoice.performances) {
-        // 注文の内訳を出力
-        result += ` ${playFor(perf).name}: ${usd(amountFor(perf))} (${perf.audience} seats)\n`;
-    }
-
     function totalAmount() {
         let result = 0;
         for (let aPerformance of invoice.performances) {
@@ -65,7 +68,4 @@ export function statement(invoice, plays) {
         return result;
     }
 
-    result += `Amount owed is ${usd(totalAmount())}\n`;
-    result += `You earned ${totalVolumeCredits()} credits\n`;
-    return result;
 }
