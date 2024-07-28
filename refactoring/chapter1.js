@@ -40,8 +40,3 @@ export function statement(invoice, plays) {
     result += `You earned ${volumeCredits} credits\n`;
     return result;
 }
-
-
-export function sum(a, b) {
-    return a + b
-}

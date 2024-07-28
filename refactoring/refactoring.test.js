@@ -1,9 +1,5 @@
 import { expect, test } from 'vitest'
-import {statement, sum} from "./chapter1"
-
-test('adds 1 + 2 to equal 3', () => {
-    expect(sum(1, 2)).toBe(3)
-})
+import {statement} from "./chapter1"
 
 test('statement', () => {
     const invoice = [
