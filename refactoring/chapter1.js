@@ -39,3 +39,7 @@ function renderHtml(data) {
 export function statement(invoice, plays) {
     return renderPlainText(createStatementData(invoice, plays));
 }
+
+function htmlStatement(invoice, plays) {
+    return renderHtml(createStatementData(invoice, plays));
+}
