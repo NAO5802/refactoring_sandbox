@@ -26,7 +26,7 @@ export function statement(invoice, plays) {
     statementData.totalVolumeCredits = totalVolumeCredits(statementData);
     return renderPlainText(statementData);
 
-    function enrichPerformance(aPerformance){
+    function enrichPerformance(aPerformance) {
         const result = Object.assign({}, aPerformance);
         result.play = playFor(result);
         result.amount = amountFor(result);
@@ -70,11 +70,7 @@ export function statement(invoice, plays) {
     }
 
     function totalAmount(data) {
-        let result = 0;
-        for (let aPerformance of data.performances) {
-            result += aPerformance.amount;
-        }
-        return result;
+        return data.performances.reduce((total, p) => total + p.amount, 0);
     }
 
     function totalVolumeCredits(data) {
