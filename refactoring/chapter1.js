@@ -18,7 +18,7 @@ function renderPlainText(data) {
     }
 }
 
-function createStatementData(invoice, plays, totalAmount, totalVolumeCredits) {
+function createStatementData(invoice, plays) {
     const statementData = {};
     statementData.customer = invoice.customer;
     statementData.performances = invoice.performances.map(enrichPerformance);
@@ -69,12 +69,6 @@ function createStatementData(invoice, plays, totalAmount, totalVolumeCredits) {
         return result;
     }
 
-}
-
-export function statement(invoice, plays) {
-    const statementData = createStatementData(invoice, plays, totalAmount, totalVolumeCredits);
-    return renderPlainText(statementData);
-
     function totalAmount(data) {
         return data.performances.reduce((total, p) => total + p.amount, 0);
     }
@@ -82,4 +76,11 @@ export function statement(invoice, plays) {
     function totalVolumeCredits(data) {
         return data.performances.reduce((total, p) => total + p.volumeCredits, 0);
     }
+}
+
+export function statement(invoice, plays) {
+    const statementData = createStatementData(invoice, plays);
+    return renderPlainText(statementData);
+
+
 }
