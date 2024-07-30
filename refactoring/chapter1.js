@@ -79,8 +79,5 @@ function createStatementData(invoice, plays) {
 }
 
 export function statement(invoice, plays) {
-    const statementData = createStatementData(invoice, plays);
-    return renderPlainText(statementData);
-
-
+    return renderPlainText(createStatementData(invoice, plays));
 }
