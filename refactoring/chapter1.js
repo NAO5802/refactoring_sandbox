@@ -1,5 +1,5 @@
 function renderPlainText(data, invoice, plays) {
-    let result = `Statement for ${invoice.customer}\n`;
+    let result = `Statement for ${data.customer}\n`;
     for (let perf of invoice.performances) {
         // 注文の内訳を出力
         result += ` ${playFor(perf).name}: ${usd(amountFor(perf))} (${perf.audience} seats)\n`;
@@ -70,6 +70,7 @@ function renderPlainText(data, invoice, plays) {
 }
 
 export function statement(invoice, plays) {
-   const statementData = {};
+    const statementData = {};
+    statementData.customer = invoice.customer;
     return renderPlainText(statementData, invoice, plays);
 }
