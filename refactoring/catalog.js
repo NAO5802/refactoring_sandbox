@@ -9,7 +9,7 @@ export function printOwing(invoice) {
 
     printDetails(invoice, outstanding);
 
-    return `***********************\n**** Customer Owes ****\n***********************\nname: ${invoice.customer}\namount: ${outstanding}\ndue: ${invoice.dueDate.toLocaleDateString()}`;
+    return printResult(invoice, outstanding);
 
     function printBanner() {
         console.log("***********************");
@@ -29,6 +29,10 @@ export function printOwing(invoice) {
         console.log(`name: ${invoice.customer}`);
         console.log(`amount: ${outstanding}`);
         console.log(`due: ${invoice.dueDate.toLocaleDateString()}`);
+    }
+
+    function printResult(invoice, outstanding) {
+        return `***********************\n**** Customer Owes ****\n***********************\nname: ${invoice.customer}\namount: ${outstanding}\ndue: ${invoice.dueDate.toLocaleDateString()}`;
     }
 }
 
