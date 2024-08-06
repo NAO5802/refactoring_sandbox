@@ -1,6 +1,7 @@
 import {expect, test, describe} from 'vitest'
 import {statement} from "./chapter1"
 import createStatementData from "./createStatementData";
+import {printOwing} from "./catalog";
 
 describe('chapter1', () => {
     const invoice = [
@@ -83,5 +84,23 @@ describe('chapter1', () => {
     })
 })
 
-
-
+describe('catalog', () => {
+    const invoice = {
+        "customer": "BigCo",
+        "orders": [
+            {
+                "amount": 100
+            },
+            {
+                "amount": 200
+            },
+            {
+                "amount": 300
+            }
+        ]
+    }
+    test('printOwing', () => {
+        expect(printOwing(invoice)).toBe("***********************\n**** Customer Owes ****\n***********************\nname: BigCo\namount: 600\ndue: 7/30/2024")
+    })
+}
+)

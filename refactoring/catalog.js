@@ -17,5 +17,10 @@ export function printOwing(invoice) {
     console.log(`name: ${invoice.customer}`);
     console.log(`amount: ${outstanding}`);
     console.log(`due: ${invoice.dueDate.toLocaleDateString()}`);
+
+    return `***********************\n**** Customer Owes ****\n***********************\nname: ${invoice.customer}\namount: ${outstanding}\ndue: ${invoice.dueDate.toLocaleDateString()}`;
 }
 
+class Clock {
+    static today = new Date('2024-06-30');
+}
