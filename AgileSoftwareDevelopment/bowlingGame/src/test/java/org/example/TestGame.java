@@ -10,18 +10,18 @@ public class TestGame {
     private Game game;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         game = new Game();
     }
 
     @Test
-    void testOneThrow(){
+    void testOneThrow() {
         game.add(5);
         assertEquals(5, game.score());
     }
 
     @Test
-    void testTwoThrowsNoMark(){
+    void testTwoThrowsNoMark() {
         game.add(5);
         game.add(4);
         game.add(7);
@@ -32,7 +32,10 @@ public class TestGame {
     }
 
     @Test
-    void testSimpleSpare(){
-
+    void testSimpleSpare() {
+        game.add(3);
+        game.add(7);
+        game.add(3);
+        assertEquals(13, game.scoreForFrame(1));
     }
 }
