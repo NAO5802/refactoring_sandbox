@@ -15,13 +15,6 @@ public class TestGame {
     }
 
     @Test
-    void testOneThrow() {
-        game.add(5);
-        assertEquals(5, game.score());
-        assertEquals(1, game.getCurrentFrame());
-    }
-
-    @Test
     void testTwoThrowsNoMark() {
         game.add(5);
         game.add(4);
@@ -58,6 +51,18 @@ public class TestGame {
         game.add(2);
         assertEquals(13, game.scoreForFrame(1));
         assertEquals(18, game.scoreForFrame(2));
+        assertEquals(18, game.score());
         assertEquals(3, game.getCurrentFrame());
+    }
+
+    @Test
+    void testSimpleStrike(){
+        game.add(10);
+        game.add(3);
+        game.add(6);
+        assertEquals(19, game.scoreForFrame(1));
+        assertEquals(28, game.score());
+        assertEquals(3, game.getCurrentFrame());
+
     }
 }
