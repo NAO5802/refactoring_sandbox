@@ -17,17 +17,26 @@ public class Game {
     }
 
     private void adjustCurrentFrame(int pins) {
-        if (firstThrowInFrame == true) {
-            if (pins == 10) { // ストライク
-                itsCurrentFrame++;
-            } else {
+        if (firstThrowInFrame){
+            if(!adjustFrameForStrike(pins)){
                 firstThrowInFrame = false;
             }
         } else {
             firstThrowInFrame = true;
-            itsCurrentFrame++;
+            advanceFrame();
         }
-        itsCurrentFrame = Math.min(11, itsCurrentFrame);
+    }
+
+    private boolean adjustFrameForStrike(int pins) {
+        if (pins == 10) { // ストライク
+            advanceFrame();
+            return true;
+        }
+        return false;
+    }
+
+    private void advanceFrame() {
+        itsCurrentFrame = Math.min(11, itsCurrentFrame + 1);
     }
 
     int scoreForFrame(int theFrame) {
