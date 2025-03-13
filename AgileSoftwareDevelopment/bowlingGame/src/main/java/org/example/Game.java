@@ -1,10 +1,9 @@
 package org.example;
 
 public class Game {
-    private int itsScore = 0;
     private int itsCurrentFrame = 1;
     private boolean firstThrowInFrame = true;
-    private Scorer itsScorer = new Scorer();
+    private final Scorer itsScorer = new Scorer();
 
     int score() {
         return scoreForFrame(itsCurrentFrame);
@@ -12,7 +11,6 @@ public class Game {
 
     void add(int pins) {
         itsScorer.addThrow(pins);
-        itsScore += pins;
         adjustCurrentFrame(pins);
     }
 
